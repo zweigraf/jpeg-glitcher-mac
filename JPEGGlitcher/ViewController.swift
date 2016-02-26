@@ -26,6 +26,27 @@ class ViewController: NSViewController {
     }
 
     @IBAction func loadImage(sender: NSButton) {
+        let openPanel = NSOpenPanel();
+        openPanel.canChooseDirectories = false;
+        openPanel.allowsMultipleSelection = false;
+        
+        openPanel.beginWithCompletionHandler { (result) -> Void in
+            if result == NSFileHandlingPanelOKButton {
+                guard let url = openPanel.URLs.first else {
+                    return;
+                }
+                
+                guard let data = NSData(contentsOfURL: url) else {
+                    return
+                }
+                
+                guard let image = NSImage(data: data) else {
+                    return
+                }
+                
+                self.imageView.image = image;
+            }
+        }
     }
 
 }

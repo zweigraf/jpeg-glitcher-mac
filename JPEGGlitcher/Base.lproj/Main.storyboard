@@ -674,7 +674,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ARY-Mo-9O3">
-                                <rect key="frame" x="185" y="222" width="111" height="32"/>
+                                <rect key="frame" x="14" y="222" width="111" height="32"/>
                                 <animations/>
                                 <buttonCell key="cell" type="push" title="Load Image" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xEd-QF-ZzO">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -686,6 +686,9 @@
                             </button>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AFF-iU-kGj">
                                 <rect key="frame" x="20" y="20" width="440" height="189"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="500" id="tYZ-38-cVr"/>
+                                </constraints>
                                 <animations/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="X5V-kG-9k0"/>
                             </imageView>
@@ -694,7 +697,7 @@
                             <constraint firstItem="ARY-Mo-9O3" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="1f9-EH-Ijg"/>
                             <constraint firstItem="AFF-iU-kGj" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="5rm-JV-gui"/>
                             <constraint firstItem="AFF-iU-kGj" firstAttribute="top" secondItem="ARY-Mo-9O3" secondAttribute="bottom" constant="20" id="J0x-G9-iG3"/>
-                            <constraint firstItem="ARY-Mo-9O3" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="qIz-0d-c18"/>
+                            <constraint firstItem="ARY-Mo-9O3" firstAttribute="leading" secondItem="AFF-iU-kGj" secondAttribute="leading" id="i3s-By-fDr"/>
                             <constraint firstAttribute="bottom" secondItem="AFF-iU-kGj" secondAttribute="bottom" constant="20" id="xmN-Qs-vc4"/>
                             <constraint firstAttribute="trailing" secondItem="AFF-iU-kGj" secondAttribute="trailing" constant="20" id="yh1-Bl-JtH"/>
                         </constraints>

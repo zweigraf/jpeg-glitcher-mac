@@ -79,10 +79,23 @@ class ViewController: NSViewController {
         
         data.getBytes(&bytes, length: data.length);
         
-        let randomIndex = Int(drand48() * Double(count));
-        let randomValue = UInt8(drand48() * Double(UInt8.max));
+        let maxIndex = count - 1;
         
-        bytes[randomIndex] = randomValue;
+        let randomIndex = Int(drand48() * Double(maxIndex));
+        
+        let remainingIndices = maxIndex - randomIndex
+        
+        let randomCount = Int(drand48() * Double(remainingIndices)) + 1
+        
+        let upperBound = randomIndex + randomCount
+        
+        print("Glitching \(randomCount) times from \(randomIndex) to \(upperBound - 1)).")
+        for i in randomIndex..<upperBound {
+            let randomValue = UInt8(drand48() * Double(UInt8.max))
+            bytes[i] = randomValue
+            
+//            print("Changing byte at index \(i) to value \(randomValue)")
+        }
         
         let newData = NSData(bytes: &bytes, length: data.length);
         return newData;

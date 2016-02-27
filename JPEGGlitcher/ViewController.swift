@@ -13,6 +13,8 @@ class ViewController: NSViewController {
     @IBOutlet weak var loadImageButton: NSButton!
     @IBOutlet weak var imageView: NSImageView!
     
+    var originalData : NSData?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,21 +42,38 @@ class ViewController: NSViewController {
                     return
                 }
                 
-                let newData = self.glitchData(data);
+                self.originalData = data
                 
-                guard let image = NSImage(data: newData) else {
-                    print("could not create image from glitched data")
-                    return
-                }
-                
-                self.imageView.image = image;
-                
+                self.reglitch(sender)
                 
             }
         }
     }
     
-    func glitchData(data : NSData) -> NSData {
+    @IBAction func reglitch(sender: NSButton) {
+        guard let data = self.originalData else {
+            return
+        }
+        
+        guard let image = ViewController.createGlitchedImage(data) else {
+            return
+        }
+        
+        self.imageView.image = image;
+    }
+    
+    static func createGlitchedImage(data : NSData) -> NSImage? {
+        let newData = ViewController.glitchData(data);
+        
+        guard let image = NSImage(data: newData) else {
+            print("could not create image from glitched data")
+            return nil
+        }
+        
+        return image
+    }
+    
+    static func glitchData(data : NSData) -> NSData {
         let count = data.length / sizeof(UInt8);
         var bytes = [UInt8](count: count, repeatedValue : 0);
         

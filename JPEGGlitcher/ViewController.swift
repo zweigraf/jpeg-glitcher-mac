@@ -85,11 +85,11 @@ class ViewController: NSViewController {
         
         let remainingIndices = maxIndex - randomIndex
         
-        let randomCount = Int(drand48() * Double(remainingIndices)) + 1
+        let randomCount = min(Int(drand48() * Double(remainingIndices)) + 1, 10)
         
         let upperBound = randomIndex + randomCount
         
-        print("Glitching \(randomCount) times from \(randomIndex) to \(upperBound - 1)).")
+        print("Glitching \(randomCount) times from \(randomIndex) to \(upperBound - 1).")
         for i in randomIndex..<upperBound {
             let randomValue = UInt8(drand48() * Double(UInt8.max))
             bytes[i] = randomValue

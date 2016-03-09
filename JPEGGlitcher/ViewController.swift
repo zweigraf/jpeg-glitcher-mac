@@ -15,6 +15,7 @@ class ViewController: NSViewController {
     
     var originalData : NSData?
     
+    // MARK: ViewController Overrides 
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,6 +28,7 @@ class ViewController: NSViewController {
         }
     }
 
+    // MARK: IBActions
     @IBAction func loadImage(sender: NSButton) {
         let openPanel = NSOpenPanel();
         openPanel.canChooseDirectories = false;
@@ -62,6 +64,8 @@ class ViewController: NSViewController {
         self.imageView.image = image;
     }
     
+    
+    // MARK: Glitch Helper
     static func createGlitchedImage(data : NSData) -> NSImage? {
         let newData = ViewController.glitchData(data);
         
